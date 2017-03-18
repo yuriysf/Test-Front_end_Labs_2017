@@ -41,7 +41,7 @@ $.ajax({
 
         // accordeon-------------------------------------------------------------
         $(".wrapper>.content").hide();
-        $(".wrapper>.accordeon").click(function(){
+        $(".wrapper>.accordeon").on("click",function(){
           var getContent = $(this).next(".content");
 
           if (getContent.is(":visible")){
