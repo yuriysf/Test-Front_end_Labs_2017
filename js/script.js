@@ -19,6 +19,7 @@ $(document).ready(function(){
 // search-------------------------------------------------------------------
 $(document).ready(function(){
   $(".form-control").change(function(){
+    $(".wrapper>div").removeClass("active-user");
     var nameInput = $(this).val(); 
     var userFirstName = $(".first-name");
     console.log(nameInput);
