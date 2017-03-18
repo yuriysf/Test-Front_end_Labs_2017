@@ -17,21 +17,13 @@ $(document).ready(function(){
 });
 
 // search-------------------------------------------------------------------
-/*function findFirstName(value){
-  var name = document.getElementsByClassName('.first-name').value;
-  console.log(name);
-  if(value === name){
-    alert("User " + value + " is founded");
-  }
-  alert("User " + value + " is not founded");
-}*/
 $(document).ready(function(){
   $(".form-control").change(function(){
-    var nameInput = $(".form-control").val(); 
-    if($(".first-name").val()===nameInput){
-      alert("ok")};
+    var nameInput = $(this).val(); 
+    var userFirstName = $(".first-name").val();
+    alert(nameInput);
   })
-})
+});
 // randomiser API-----------------------------------------------------------
 $.ajax({
 		  url: 'https://randomuser.me/api/?results=7',
