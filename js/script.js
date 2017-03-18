@@ -20,7 +20,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".form-control").change(function(){
     $(".wrapper>div").removeClass("active-user");
-    var nameInput = $(this).val(); 
+    var nameInput = $(this).val().toLowerCase(); 
     var userFirstName = $(".first-name");
     console.log(nameInput);
     console.log(userFirstName);
