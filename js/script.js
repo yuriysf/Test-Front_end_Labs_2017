@@ -40,7 +40,21 @@ $.ajax({
 		  dataType: 'json',
 		  success: function(data) {
     		console.log(data);
-    		$('.user1 .photo').html('<img src="' + data.results['0'].picture.thumbnail + '"class="img-circle" alt="medium_photo">');
+        $(data.results).each(function(index,value){
+          console.log(value);
+          $(".user" + (index+1) + " .photo").html('<img src="' + data.results[index].picture.thumbnail + '"class="img-circle" alt="medium_photo">');
+          $(".user" + (index+1) + " .last-name").html(data.results[index].name.last);
+          $(".user" + (index+1) + " .first-name").html(data.results[index].name.first);
+          $(".user" + (index+1) + " .username").html(data.results[index].login.username);
+          $(".user" + (index+1) + " .phone").html(data.results[index].phone);
+          $(".user" + (index+1) + " .location").html(data.results[index].location.state);
+          $(".user" + (index+1) + "+.content div:first-child").html('<h2>' + data.results[index].name.first + '</h2><i class="fa fa-2x fa-' + data.results[index].gender + '"></i><p><strong>Username </strong>' + data.results[index].login.username + '</p><p><strong>Registered </strong>' + data.results[index].registered + '</p><p><strong>Email </strong>' + data.results[index].email + '</p>');
+          $(".user" + (index+1) + "+.content div:nth-child(2)").html('<p><strong>Adress </strong>' + data.results[index].location.street + '</p></p><strong>City </strong>' + data.results[index].location.city + '</p><p><strong>Zip Code </strong>' + data.results[index].location.postcode + '</p>');
+          $(".user" + (index+1) + "+.content div:nth-child(3)").html('<p><strong>Birthday </strong>' + data.results[index].dob + '</p><p><strong>Phone </strong>' + data.results[index].phone + '</p><p><strong>Cell </strong>' + data.results[index].cell + '</p>');
+          $(".user" + (index+1) + "+.content div:nth-child(4)").html('<img src="' + data.results[index].picture.large + '" class="img-circle" alt="large_photo">');
+        });
+
+    		/*$('.user1 .photo').html('<img src="' + data.results['0'].picture.thumbnail + '"class="img-circle" alt="medium_photo">');
     		$('.user1 .last-name').html(data.results['0'].name.last);
     		$('.user1 .first-name').html(data.results['0'].name.first);
    			$('.user1 .username').html(data.results['0'].login.username);
@@ -115,7 +129,7 @@ $.ajax({
    			$('.user7+.content div:first-child').html('<h2>' + data.results['6'].name.first + '</h2><i class="fa fa-2x fa-' + data.results["6"].gender + '"></i><p><strong>Username </strong>' + data.results['6'].login.username + '</p><p><strong>Registered </strong>' + data.results['6'].registered + '</p><p><strong>Email </strong>' + data.results['6'].email + '</p>');
    			$('.user7+.content div:nth-child(2)').html('<p><strong>Adress </strong>' + data.results['6'].location.street + '</p></p><strong>City </strong>' + data.results['6'].location.city + '</p><p><strong>Zip Code </strong>' + data.results['6'].location.postcode + '</p>');
    			$('.user7+.content div:nth-child(3)').html('<p><strong>Birthday </strong>' + data.results['6'].dob + '</p><p><strong>Phone </strong>' + data.results['6'].phone + '</p><p><strong>Cell </strong>' + data.results['6'].cell + '</p>');
-   			$('.user7+.content div:nth-child(4)').html('<img src="' + data.results['6'].picture.large + '" class="img-circle" alt="large_photo">');
+   			$('.user7+.content div:nth-child(4)').html('<img src="' + data.results['6'].picture.large + '" class="img-circle" alt="large_photo">');*/
 
 
         // chart------------------------------------------------------------------
