@@ -20,8 +20,17 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".form-control").change(function(){
     var nameInput = $(this).val(); 
-    var userFirstName = $(".first-name").val();
-    alert(nameInput);
+    var userFirstName = $(".first-name");
+    
+    $(userFirstName).each(function() {
+      if ($(this).text() === nameInput){
+        alert("User is founded");
+        return false;
+      }else{
+        alert("User is not founded");
+        return false;
+      }
+    })
   })
 });
 // randomiser API-----------------------------------------------------------
