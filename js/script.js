@@ -21,16 +21,16 @@ $(document).ready(function(){
   $(".form-control").change(function(){
     var nameInput = $(this).val(); 
     var userFirstName = $(".first-name");
-    
-    $(userFirstName).each(function() {
-      if ($(this).text() === nameInput){
-        alert("User is founded");
-        return false;
-      }else{
-        alert("User is not founded");
-        return false;
+    console.log(nameInput);
+    console.log(userFirstName);
+
+    $(userFirstName).each(function(index,data) {
+      console.log(data);
+      if(nameInput === $(data).text()){
+        $(".user" + (index+1)).addClass("active-user");
       }
-    })
+    // console.log('Порядковый номер: ' + index + ' ; Содержимое: ' +$(data).text());
+    });
   })
 });
 // randomiser API-----------------------------------------------------------
