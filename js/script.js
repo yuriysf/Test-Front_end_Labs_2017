@@ -25,18 +25,25 @@ $.ajax({
 		  success: function(data) {
     		console.log(data);
         $(data.results).each(function(index,value){
+
+          var registeredDate = data.results[index].registered.slice(0, 10).split("-");
+          registeredDate = registeredDate[2] + "/" + registeredDate[1] + "/" + registeredDate[0];
+          var birthdayDate = data.results[index].dob.slice(0, 10).split("-");
+          birthdayDate = birthdayDate[2] + "/" + birthdayDate[1] + "/" + birthdayDate[0];
+          var user = ".user" + (index+1);
+
           $(".wrapper").append('<div class="row user' + (index+1) + ' accordeon"><div class="col-sm-1 photo"></div><div class="col-sm-2 last-name"></div><div class="col-sm-2 first-name"></div><div class="col-sm-2 username"></div><div class="col-sm-2 phone"></div><div class="col-sm-2 location"></div><div class="col-sm-1"><i class="fa fa-plus fa-2x plus-minus"></i></div></div><div class="row content"><div class="col-sm-3"></div><div class="col-sm-3"></div><div class="col-sm-3"></div><div class="col-sm-3"></div></div>');
           console.log(value);
-          $(".user" + (index+1) + " .photo").html('<img src="' + data.results[index].picture.thumbnail + '"class="img-circle" alt="medium_photo">');
-          $(".user" + (index+1) + " .last-name").html(data.results[index].name.last);
-          $(".user" + (index+1) + " .first-name").html(data.results[index].name.first);
-          $(".user" + (index+1) + " .username").html(data.results[index].login.username);
-          $(".user" + (index+1) + " .phone").html(data.results[index].phone);
-          $(".user" + (index+1) + " .location").html(data.results[index].location.state);
-          $(".user" + (index+1) + "+.content div:first-child").html('<h2>' + data.results[index].name.first + '</h2><i class="fa fa-2x fa-' + data.results[index].gender + '"></i><p><strong>Username </strong>' + data.results[index].login.username + '</p><p><strong>Registered </strong>' + data.results[index].registered + '</p><p><strong>Email </strong>' + data.results[index].email + '</p>');
-          $(".user" + (index+1) + "+.content div:nth-child(2)").html('<p><strong>Adress </strong>' + data.results[index].location.street + '</p></p><strong>City </strong>' + data.results[index].location.city + '</p><p><strong>Zip Code </strong>' + data.results[index].location.postcode + '</p>');
-          $(".user" + (index+1) + "+.content div:nth-child(3)").html('<p><strong>Birthday </strong>' + data.results[index].dob + '</p><p><strong>Phone </strong>' + data.results[index].phone + '</p><p><strong>Cell </strong>' + data.results[index].cell + '</p>');
-          $(".user" + (index+1) + "+.content div:nth-child(4)").html('<img src="' + data.results[index].picture.large + '" class="img-circle" alt="large_photo">');
+          $(user + " .photo").html('<img src="' + data.results[index].picture.thumbnail + '"class="img-circle" alt="medium_photo">');
+          $(user + " .last-name").html(data.results[index].name.last);
+          $(user + " .first-name").html(data.results[index].name.first);
+          $(user + " .username").html(data.results[index].login.username);
+          $(user + " .phone").html(data.results[index].phone);
+          $(user + " .location").html(data.results[index].location.state);
+          $(user + "+.content div:first-child").html('<h2>' + data.results[index].name.first + '</h2><i class="fa fa-2x fa-' + data.results[index].gender + '"></i><p><strong>Username </strong>' + data.results[index].login.username + '</p><p><strong>Registered </strong>' + registeredDate + '</p><p><strong>Email </strong>' + data.results[index].email + '</p>');
+          $(user + "+.content div:nth-child(2)").html('<p><strong>Adress </strong>' + data.results[index].location.street + '</p></p><strong>City </strong>' + data.results[index].location.city + '</p><p><strong>Zip Code </strong>' + data.results[index].location.postcode + '</p>');
+          $(user + "+.content div:nth-child(3)").html('<p><strong>Birthday </strong>' + birthdayDate + '</p><p><strong>Phone </strong>' + data.results[index].phone + '</p><p><strong>Cell </strong>' + data.results[index].cell + '</p>');
+          $(user + "+.content div:nth-child(4)").html('<img src="' + data.results[index].picture.large + '" class="img-circle" alt="large_photo">');
         });
 
         // accordeon-------------------------------------------------------------
